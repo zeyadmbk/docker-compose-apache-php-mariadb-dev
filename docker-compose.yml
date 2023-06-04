@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  apache-php: # apache + php container
+    build: './build/apache-php/' #location of Dockerfile relative to the file
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # to able able to access the host machine from the container using host.docker.internal as an IP
+    environment:
+      - TZ=Europe/Amsterdam
+    cap_add:
+      - SYS_PTRACE
+    privileged: true
+    networks:
+      - app-network
+    ports:
+      - "80:80" # mapping the host port to the container port
+    volumes:
+      # location of the dev directory on the local machine (must be change accordingly) and mapping it to a directory in the container
+      - /usr/dev/project/:/var/www/html/
+
+  mariadb: # database container
+    image: mariadb:10.11.3
+    environment:
+    - TZ=Europe/Amsterdam
+    - MYSQL_ROOT_PASSWORD=password # root password that will be ssigned when the container is created
+    - MYSQL_DATABASE=db # name of the database to be created when the container is created (optional)
+      # MYSQL_USER: user # a username account to be created when the container is created (optional)
+      # MYSQL_PASSWORD: password # a password for the user account above to be created when the container is created (optional)
+    ports:
+      - 33060:3306 # mapping the host port to the container port
+    networks:
+      - app-network
+    restart: on-failure
+    volumes:
+     - mariadb-data:/var/lib/mysql # IMPORTANT: creating a voluime for the database so its data will be presistent and wont be deleted when the container is removed
+networks:
+  app-network:
+volumes:
+  mariadb-data:
+

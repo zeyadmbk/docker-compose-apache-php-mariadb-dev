@@ -1,4 +1,6 @@
 # Docker Compose Configuration for Apache, PHP 8.2, and MariaDB 10.11.3 (Development Environment)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+
 This is a sample Docker Compose configuration that sets up a development environment with Apache, PHP 8.2, and MariaDB 10.11.3. It allows you to quickly spin up a local development environment for web applications that require these technologies.
 
 ## Prerequisites
